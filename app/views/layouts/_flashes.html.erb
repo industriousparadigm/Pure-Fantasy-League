@@ -1,0 +1,9 @@
+<% flash.each do |type, message| %>
+  <script>
+    Messenger().post({
+      message: "<%= message %>",
+      type: '<%= flash_type_for type %>',
+      showCloseButton: true
+    });
+  </script>
+<% end %>

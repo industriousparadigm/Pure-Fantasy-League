@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pfl</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <title><%= page_title_for_header %></title>
+  <%= javascript_include_tag 'application' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= controller_name %> <%= action_name %>">
 
-<%= yield %>
+  <main>
+    <%= render partial: "layouts/flashes", flash: flash %>
+    <%= yield %>
+  </main>
+
+  <footer>
+    <div>
+      <div class="pull right">Contact us at <%= mail_to 'help@purefantasyleague.com' %></div>
+      &copy; Joel Moss &ndash; Developed with Style
+    </div>
+  </footer>
 
 </body>
 </html>
