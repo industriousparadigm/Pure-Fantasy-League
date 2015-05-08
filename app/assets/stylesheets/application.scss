@@ -10,27 +10,13 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require messenger
- *= require messenger-spinner
- *= require messenger-theme-future
  *= require_self
  */
 
-@import 'bourbon';
-@import 'semantic-ui';
-@import 'media-queries';
+@import "variables";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
 
-// Libs
-// @import 'lib/utils';
-
-body {
-  background: transparent image-url('crossword.png');
-
-  // Pages
-  // @import 'pages/registrations/edit';
-}
-
-main {
-  @extend .container;
-  margin-bottom: 150px;
-}
+@import "base";

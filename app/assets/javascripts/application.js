@@ -13,16 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.readyselector
-//= require semantic-ui
-//= require messenger
-//= require messenger-theme-future
+//= require bootstrap-sprockets
 //= require react
-//= require moment
 //= require react_ujs
 //= require lodash
 //= require components
 //= require_tree .
-
-Messenger.options = {
-  extraClasses: 'messenger-fixed messenger-on-bottom'
-}
