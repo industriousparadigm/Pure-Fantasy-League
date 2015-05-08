@@ -1,0 +1,33 @@
+@import "base/bootswatch";
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+
+  header {
+    padding: 60px 15px 0;
+  }
+
+  main {
+    margin-bottom: 140px;
+
+    @import 'base/header';
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    background-color: #f5f5f5;
+
+    > .container {
+      padding: 20px;
+    }
+  }
+}

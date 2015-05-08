@@ -5,21 +5,26 @@ gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'bootstrap-sass'
+gem 'font-awesome-sass'
 gem 'sass-mediaqueries-rails'
 gem 'bourbon'
-gem 'semantic-ui-sass'
 gem 'sprockets-es6'
 gem 'react-rails'
 gem 'lodash-rails'
-# See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'bower-rails'
+gem 'therubyracer', platforms: :ruby
 
 gem 'mongoid'
+gem 'devise'
 gem 'simple_form'
+gem 'breadcrumbs_on_rails'
 gem 'attribute_normalizer'
-
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'pages'
+gem 'mechanize'
+gem 'maildown'
+gem 'paranoia'
+gem 'public_activity'
 
 group :development do
   gem 'puma'
