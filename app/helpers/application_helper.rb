@@ -8,7 +8,7 @@ module ApplicationHelper
     if content_for?(:page_title)
       strip_tags "#{content_for(:page_title)} &ndash; PFL"
     else
-      'Pure Fantasy League'
+      'PFL'
     end
   end
 
