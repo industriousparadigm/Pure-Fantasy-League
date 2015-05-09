@@ -6,9 +6,9 @@ module ApplicationHelper
 
   def page_title_for_header
     if content_for?(:page_title)
-      strip_tags "#{content_for(:page_title)} &ndash; Pure Fantasy League"
+      strip_tags "#{content_for(:page_title)} &ndash; PFL"
     else
-      'Codaset'
+      'Pure Fantasy League'
     end
   end
 
