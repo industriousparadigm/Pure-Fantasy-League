@@ -228,6 +228,8 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (~> 1.1)
+    select2-rails (3.5.9.3)
+      thor (~> 0.14)
     shellany (0.0.1)
     simple_form (3.1.0)
       actionpack (~> 4.0)
@@ -291,6 +293,7 @@ DEPENDENCIES
   react-rails
   sass-mediaqueries-rails
   sass-rails (~> 5.0)
+  select2-rails
   simple_form
   spring
   sprockets-es6

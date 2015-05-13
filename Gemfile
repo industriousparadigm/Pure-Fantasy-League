@@ -14,6 +14,7 @@ gem 'sprockets-es6'
 gem 'react-rails'
 gem 'lodash-rails'
 gem 'bower-rails'
+gem 'select2-rails'
 
 gem 'devise'
 gem 'simple_form'

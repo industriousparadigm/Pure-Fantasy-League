@@ -17,5 +17,6 @@
 //= require react
 //= require react_ujs
 //= require lodash
+//= require select2
 //= require components
 //= require_tree .

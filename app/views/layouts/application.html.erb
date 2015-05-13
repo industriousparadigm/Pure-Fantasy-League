@@ -14,7 +14,7 @@
   <body class="<%= controller_name %> <%= action_name %>">
 
     <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -29,6 +29,14 @@
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
               <li>Stuff!</li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <%- if signed_in? -%>
+                ?
+              <%- else -%>
+                <li><%= link_to icon('sign-in', 'Sign in'), new_user_session_path %></li>
+              <%- end -%>
             </ul>
           </div>
         </div>

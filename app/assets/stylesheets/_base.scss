@@ -1,5 +1,3 @@
-@import "base/bootswatch";
-
 html {
   position: relative;
   min-height: 100%;
@@ -29,5 +27,13 @@ body {
     > .container {
       padding: 20px;
     }
+  }
+
+  .navbar-brand {
+    font-weight: bold;
+  }
+
+  .form-action-links {
+    margin: 7px 0 0 20px;
   }
 }
