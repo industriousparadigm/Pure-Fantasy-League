@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :leagues
   devise_for :users
 
   # You can have the root of your site routed with "root"
