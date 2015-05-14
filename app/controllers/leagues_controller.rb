@@ -1,5 +1,7 @@
 class LeaguesController < ApplicationController
+  before_action :authenticate_user!, :require_admin!
   before_action :set_league, only: [:show, :edit, :update, :destroy]
+
 
   # GET /leagues
   def index
@@ -45,7 +47,9 @@ class LeaguesController < ApplicationController
     redirect_to leagues_url, notice: 'League was successfully destroyed.'
   end
 
+
   private
+
     # Use callbacks to share common setup or constraints between actions.
     def set_league
       @league = League.find(params[:id])
@@ -55,4 +59,5 @@ class LeaguesController < ApplicationController
     def league_params
       params.require(:league).permit(:title)
     end
+
 end
