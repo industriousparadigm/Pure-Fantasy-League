@@ -12,7 +12,7 @@
 
       <div class="form-actions clearfix">
         <div class="pull-left">
-          <%= f.button :submit, "Sign in" %>
+          <%= f.button :submit, "Sign in", class: 'btn-primary', data: { disable_with: 'Please wait...' } %>
         </div>
         <div class="pull-left form-action-links">
           <%= link_to "Sign up", new_registration_path(resource_name) %> |

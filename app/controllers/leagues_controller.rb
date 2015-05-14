@@ -26,6 +26,7 @@ class LeaguesController < ApplicationController
 
   # POST /leagues
   def create
+    add_breadcrumb 'Creating...'
     @league = League.new(league_params)
 
     if @league.save
@@ -37,6 +38,7 @@ class LeaguesController < ApplicationController
 
   # PATCH/PUT /leagues/1
   def update
+    add_breadcrumb 'Editing...'
     if @league.update(league_params)
       redirect_to @league, notice: 'League was successfully updated.'
     else

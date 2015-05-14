@@ -28,13 +28,17 @@
 
           <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-              <li><%= link_to 'Leagues', leagues_path %></li>
+              <%- if current_user.try(:admin?) -%>
+                <li class="<%= 'active' if controller_name == 'leagues' %>">
+                  <%= link_to 'Leagues', leagues_path %>
+                </li>
+              <%- end -%>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
               <%- if signed_in? -%>
-                <li class="navbar-text">Signed in as <%= current_user %></li>
-                <li><%= link_to icon('sign-out', 'Sign out'), destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %></li>
+                <li class="navbar-text"><small>Signed in as <%= link_to current_user, edit_user_registration_path %></small></li>
+                <li><%= link_to icon('sign-out fa-lg'), destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure?' } %></li>
               <%- else -%>
                 <li><%= link_to icon('sign-in', 'Sign in'), new_user_session_path %></li>
               <%- end -%>

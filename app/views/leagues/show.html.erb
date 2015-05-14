@@ -1,4 +1,9 @@
-<h1><%= @league %></h1>
-
-<%= link_to 'Edit', edit_league_path(@league) %> |
-<%= link_to 'Back', leagues_path %>
+<h1>
+  <div class="pull-right">
+    <div class="btn-group" role="group">
+      <%= link_to 'Edit', [:edit, @league], class: 'btn btn-default' %>
+      <%= link_to 'Destroy', @league, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+    </div>
+  </div>
+  <%= @league %>
+</h1>

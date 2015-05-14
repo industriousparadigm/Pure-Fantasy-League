@@ -7,30 +7,4 @@
     position: relative;
     top: -6px;
   }
-
-  .pull-right {
-    font-size: 0.4em;
-    margin-top: 20px;
-
-    &.btn {
-      margin-top: 8px;
-    }
-
-    .substitute {
-      .fa-stack {
-        width: 1.6em;
-        height: 1.6em;
-      }
-
-      .fa-stack-2x {
-        font-size: 1.6em;
-        color: #aaa;
-        top: 3px;
-      }
-
-      &.highlight .fa-stack-2x {
-        color: green;
-      }
-    }
-  }
 }
