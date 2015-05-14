@@ -1,4 +1,5 @@
 class LeaguesController < ApplicationController
+  add_breadcrumb 'Leagues', :leagues_path
   before_action :authenticate_user!, :require_admin!
   before_action :set_league, only: [:show, :edit, :update, :destroy]
 
@@ -14,11 +15,13 @@ class LeaguesController < ApplicationController
 
   # GET /leagues/new
   def new
+    add_breadcrumb 'Creating...'
     @league = League.new
   end
 
   # GET /leagues/1/edit
   def edit
+    add_breadcrumb 'Editing...'
   end
 
   # POST /leagues
@@ -53,6 +56,7 @@ class LeaguesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_league
       @league = League.find(params[:id])
+      add_breadcrumb @league, @league
     end
 
     # Only allow a trusted parameter "white list" through.
