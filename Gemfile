@@ -17,6 +17,7 @@ gem 'bower-rails'
 gem 'select2-rails'
 
 gem 'devise'
+gem 'devise_invitable'
 gem 'pundit'
 gem 'simple_form'
 gem 'breadcrumbs_on_rails'

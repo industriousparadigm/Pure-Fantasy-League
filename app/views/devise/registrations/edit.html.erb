@@ -1,5 +1,8 @@
 <%- add_breadcrumb 'My Profile' -%>
-<h1>My Profile</h1>
+<h1>
+  <%- if resource.admin? -%><div class="pull-right label label-info">admin</div><%- end -%>
+  My Profile
+</h1>
 
 <div class="row">
   <div class="col-md-5">

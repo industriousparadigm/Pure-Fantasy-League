@@ -41,7 +41,7 @@ GEM
     autoprefixer-rails (5.1.11)
       execjs
       json
-    babel-source (5.3.3)
+    babel-source (5.4.2)
     babel-transpiler (0.7.0)
       babel-source (>= 4.0, < 6)
       execjs (~> 2.0)
@@ -77,6 +77,9 @@ GEM
       responders
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
+    devise_invitable (1.4.2)
+      actionmailer (>= 3.2.6, < 5)
+      devise (>= 3.2.0)
     domain_name (0.5.24)
       unf (>= 0.0.5, < 1.0.0)
     em-websocket (0.5.1)
@@ -165,7 +168,7 @@ GEM
       rails (> 3.2)
     paranoia (2.1.2)
       activerecord (~> 4.0)
-    pg (0.18.1)
+    pg (0.18.2)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -277,6 +280,7 @@ DEPENDENCIES
   breadcrumbs_on_rails
   byebug
   devise
+  devise_invitable
   font-awesome-sass
   guard-bundler
   guard-livereload
