@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+
+    <h1 class="page-header">Accept your Invitation</h1>
+    <div class="alert alert-info">
+      <p>Thanks so much for deciding to play the <strong>"<%= @manager.league %>"</strong> Fantasy Football League with us.</p>
+      <p>To accept your invitation and begin building your team, enter a password in the form below. You will use this password to sign in and manage your team.</p>
+    </div>
+
+    <%= simple_form_for @manager, url: accept_invitation_path, html: { method: :put } do |f| %>
+      <%= f.hidden_field :invitation_token %>
+
+      <div class="form-inputs">
+        <%= f.simple_fields_for :user do |uf| %>
+          <%= uf.input :password, required: true %>
+        <%- end -%>
+      </div>
+
+      <div class="form-actions">
+        <%= f.button :submit, 'Join this League', class: 'btn-primary' %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

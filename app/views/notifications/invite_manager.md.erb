@@ -1,0 +1,14 @@
+<%= @manager %>,
+
+**You have been invited to join the "<%= @manager.league %>" Fantasy Football League by <%= @manager.invited_by %>.**
+
+To accept this invitation, [click here](<%= respond_invitation_url @manager.invitation_token %>) and you will be taken to the Pure Fantasy League (PFL) site where you will be able to sign in and begin building your Fantasy Football Team.
+
+*If the link above does not work, copy and paste the following line into your browser:*
+
+  <%= respond_invitation_url @manager.invitation_token %>
+
+
+If you feel that this email was sent in error, or you are not interested in playing, simply ignore it. We won't email you again.
+
+Thanks and welcome to PFL. You're gonna love it!

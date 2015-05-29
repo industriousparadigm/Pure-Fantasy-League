@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.1'
+gem 'rails'
 gem 'pg'
 
 gem 'sass-rails', '~> 5.0'
@@ -16,17 +16,19 @@ gem 'lodash-rails'
 gem 'bower-rails'
 gem 'select2-rails'
 
+gem 'maildown'
 gem 'devise'
-gem 'devise_invitable'
+gem 'inherited_resources'
 gem 'pundit'
 gem 'simple_form'
 gem 'breadcrumbs_on_rails'
 gem 'attribute_normalizer'
 gem 'pages'
 gem 'mechanize'
-gem 'maildown'
 gem 'paranoia'
 gem 'public_activity'
+gem 'cocoon'
+gem 'has_secure_token'
 
 group :development do
   gem 'puma'
@@ -43,4 +45,3 @@ group :development, :test do
   gem 'guard-bundler', require: false
   gem 'guard-livereload', require: false
 end
-

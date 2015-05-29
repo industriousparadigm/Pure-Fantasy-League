@@ -1,0 +1,14 @@
+<%= simple_form_for setup_manager(resource), url: [@league, @manager] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.simple_fields_for :user do |uf| %>
+      <%= uf.input :name, hint: f.error(:'user.name') %>
+      <%= uf.input :email, required: true, hint: f.error(:'user.email') %>
+    <%- end -%>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-primary' %>
+  </div>
+<% end %>

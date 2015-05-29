@@ -1,29 +1,29 @@
 <h1>
-  <div class="pull-right"><%= link_to 'New League', new_league_path, class: 'btn btn-default' %></div>
-  Listing Leagues
+  <div class="pull-right"><%= link_to 'New League', new_league_path, class: 'btn btn-primary' %></div>
+  Leagues
 </h1>
 
-<table class="table table-striped">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th width="120"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @leagues.each do |league| %>
+<% if collection.empty? %>
+  <h4 class="alert alert-warning">There are no Leagues yet! <%= link_to 'Create one now', new_league_path %></h4>
+<% else %>
+  <table class="table table-striped">
+    <thead>
       <tr>
-        <td><strong><%= link_to league, league %></strong></td>
-        <td align="right">
-          <%= link_to 'Edit', edit_league_path(league) %> |
-          <%= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
+        <th>Title</th>
+        <th width="120"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
-
-
+    <tbody>
+      <% collection.each do |league| %>
+        <tr>
+          <td><strong><%= link_to league, league %></strong></td>
+          <td align="right">
+            <%= link_to 'Edit', edit_league_path(league) %> |
+            <%= link_to 'Destroy', league, method: :delete, data: { confirm: 'Are you sure?' } %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

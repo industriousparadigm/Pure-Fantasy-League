@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  registrations:
+    invitations:
+      not_found: "Cannot find any invitation matching that token."
+      accepted: "You have accepted the invitation to join the %{league} Fantasy Football League, and we've signed you in already."
+  flash:
+    managers:
+      resend_invitation:
+        notice: "Invitation has been resent to %{email}"
+      create:
+        notice: "%{resource_name} has been invited, and an email has been sent to %{email} with further instructions."

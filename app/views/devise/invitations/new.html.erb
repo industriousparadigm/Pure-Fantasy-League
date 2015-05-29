@@ -2,7 +2,7 @@
 
 <h1>Invite a User...</h1>
 
-<%= simple_form_for resource, :as => resource_name, :url => user_invitation_path, :html => {:method => :post} do |f| %>
+<%= simple_form_for resource, :as => resource_name, :url => invite_league_managers_path, :html => {:method => :post} do |f| %>
   <%= devise_error_messages! %>
 
   <% resource.class.invite_key_fields.each do |field| -%>
