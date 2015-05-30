@@ -18,6 +18,5 @@
 //= require react_ujs
 //= require lodash
 //= require select2
-//= require cocoon
 //= require components
-//= require_tree .
+//= require_tree ./pages

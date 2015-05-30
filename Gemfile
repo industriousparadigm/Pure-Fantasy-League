@@ -27,7 +27,6 @@ gem 'pages'
 gem 'mechanize'
 gem 'paranoia'
 gem 'public_activity'
-gem 'cocoon'
 gem 'has_secure_token'
 
 group :development do

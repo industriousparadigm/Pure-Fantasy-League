@@ -8,30 +8,44 @@
   <%= resource %>
 </h1>
 
-<section>
-  <% if resource.managers.empty? %>
-    <h4 class="alert alert-warning">
-      You've not invited any Managers to this League yet. <%= link_to 'Invite one now', new_league_manager_path(resource) %>
-    </h4>
-  <% else %>
-    <%= link_to 'Invite a Manager...', new_league_manager_path(resource) %>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Email</th>
-        </tr>
-      </thead>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#managers" data-toggle="tab">Managers</a></li>
+</ul>
 
-      <tbody>
-        <%- resource.managers.each do |manager| -%>
+<div class="tab-content">
+  <div class="tab-pane active" id="managers">
+    <% if resource.managers.unscoped.empty? %>
+      <h4 class="alert alert-warning">
+        You've not invited any Managers to this League yet. <%= link_to 'Invite one now', new_league_manager_path(resource) %>
+      </h4>
+    <% else %>
+      <table class="table table-striped table-hover">
+        <thead>
           <tr>
-            <td><%= manager.user.name || 'n/a' %></td>
-            <td><%= manager.user.email %></td>
-            <td><%= link_to 'Resend invite', resend_invitation_league_manager_path(resource, manager), method: :post, class: 'btn btn-default btn-xs' %></td>
+            <th width="10"></th>
+            <th>Name</th>
+            <th>Email</th>
+            <th align="right">
+              <%= link_to 'Invite a Manager', new_league_manager_path(resource), class: 'btn btn-primary btn-xs pull-right' %>
+            </th>
           </tr>
-        <%- end -%>
-      </tbody>
-    </table>
-  <% end %>
-</section>
+        </thead>
+
+        <tbody>
+          <%- resource.managers.unscoped.includes(:user).order(:invitation_token).each do |manager| -%>
+            <tr class="<%= 'warning' if manager.pending_invitation? %>">
+              <td>
+                <%= icon 'hand-o-right', data: { toggle: 'tooltip', placement: 'right' }, title: "Invitation sent, but not yet accepted" if manager.pending_invitation? %>
+              </td>
+              <td><%= manager.user.name || 'n/a' %></td>
+              <td><%= manager.user.email %></td>
+              <td align="right">
+                <%= link_to 'Resend invite', resend_invitation_league_manager_path(resource, manager), method: :post, class: 'btn btn-default btn-xs' if manager.pending_invitation? %>
+              </td>
+            </tr>
+          <%- end -%>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

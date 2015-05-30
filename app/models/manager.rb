@@ -7,6 +7,8 @@ class Manager < ActiveRecord::Base
   before_update :nullify_invitation_token
   has_secure_token :invitation_token
 
+  default_scope { where invitation_token: nil }
+
 
   def to_s
     user.to_s
@@ -14,6 +16,10 @@ class Manager < ActiveRecord::Base
 
   def resend_invitation!
     email_invitation
+  end
+
+  def pending_invitation?
+    invitation_token
   end
 
 
