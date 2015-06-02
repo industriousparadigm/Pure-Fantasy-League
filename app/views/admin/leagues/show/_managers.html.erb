@@ -1,6 +1,6 @@
 <% if @managers.empty? %>
   <h4 class="alert alert-warning">
-    You've not invited any Managers to this League yet. <%= link_to 'Invite one now', new_admin_league_manager_path(resource) %>
+    You've not invited any Managers to this League yet. <%= link_to 'Invite one now', new_admin_league_manager_path(resource) %> or <%= link_to "add yourself", admin_league_managers_add_myself_path(resource), method: :post %>
   </h4>
 <% else %>
   <table class="table table-striped table-hover">
@@ -10,7 +10,12 @@
         <th>Name</th>
         <th>Email</th>
         <th align="right">
-          <%= link_to 'Invite a Manager', new_admin_league_manager_path(resource), class: 'btn btn-primary btn-xs pull-right' %>
+          <div class="pull-right">
+            <%= link_to 'Invite a Manager', new_admin_league_manager_path(resource) %>
+            <% unless current_user.leagues.include?(resource) %>
+              or <%= link_to "add yourself", admin_league_managers_add_myself_path(resource), method: :post %>
+            <% end %>
+          </div>
         </th>
       </tr>
     </thead>

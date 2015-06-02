@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   scope :admin, module: :admin, as: :admin do
     resources :leagues do
       resources :teams
+      post 'managers/add_myself', to: 'managers#add_myself'
       resources :managers do
         post :resend_invitation, to: 'managers#resend_invitation', on: :member
       end
