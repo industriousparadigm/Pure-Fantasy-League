@@ -1,4 +1,4 @@
-<%= simple_form_for setup_manager(resource), url: [@league, @manager] do |f| %>
+<%= simple_form_for setup_manager(resource), url: [:admin, @league, @manager] do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

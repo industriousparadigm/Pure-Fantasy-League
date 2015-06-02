@@ -7,7 +7,7 @@ class Manager < ActiveRecord::Base
   before_update :nullify_invitation_token
   has_secure_token :invitation_token
 
-  default_scope { where invitation_token: nil }
+  # default_scope { where invitation_token: nil }
 
 
   def to_s

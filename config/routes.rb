@@ -6,9 +6,12 @@ Rails.application.routes.draw do
     put 'users/accept_invitation', to: 'registrations#accept_invitation', as: :accept_invitation
   end
 
-  resources :leagues do
-    resources :managers do
-      post :resend_invitation, to: 'managers#resend_invitation', on: :member
+  get :admin, to: 'admin#index'
+  scope :admin, module: :admin, as: :admin do
+    resources :leagues do
+      resources :managers do
+        post :resend_invitation, to: 'managers#resend_invitation', on: :member
+      end
     end
   end
 

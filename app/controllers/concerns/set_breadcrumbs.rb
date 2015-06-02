@@ -11,18 +11,20 @@ module SetBreadcrumbs
 
 
   def set_parent_breadcrumb
-    if parent?
-      add_breadcrumb parent.class.name.pluralize, parent.class
-      add_breadcrumb parent, parent
+    if respond_to?(:parent?) && parent?
+      add_breadcrumb parent.class.name.pluralize, [admin_scope, parent.class]
+      add_breadcrumb parent, parent_path
     end
   end
 
   def set_collection_breadcrumb
-    add_breadcrumb resource_class.name.pluralize, collection_url if collection
+    if respond_to?(:collection) && collection
+      add_breadcrumb resource_class.name.pluralize, collection_path
+    end
   end
 
   def set_resource_breadcrumb
-    add_breadcrumb resource, resource
+    add_breadcrumb resource, resource_path
   end
 
   def set_update_breadcrumb

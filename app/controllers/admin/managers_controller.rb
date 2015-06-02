@@ -1,8 +1,5 @@
-class ManagersController < InheritedResources::Base
-  include SetBreadcrumbs
-
-  respond_to :html
-  before_action :authenticate_user!, :require_admin!
+class Admin::ManagersController < AdminController
+  inherit_resources
   belongs_to :league
 
 
@@ -10,12 +7,12 @@ class ManagersController < InheritedResources::Base
     @manager = build_resource
     @manager.invited_by = current_user
     @manager.user.new_invitation = true
-    create! { parent }
+    create! { parent_url }
   end
 
   def resend_invitation
     resource.resend_invitation!
-    redirect_to parent, notice: t('flash.managers.resend_invitation.notice', email: interpolation_options[:email])
+    redirect_to parent_url, notice: t('flash.managers.resend_invitation.notice', email: interpolation_options[:email])
   end
 
 
