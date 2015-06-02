@@ -9,43 +9,19 @@
 </h1>
 
 <ul class="nav nav-tabs">
-  <li class="active"><a href="#managers" data-toggle="tab">Managers</a></li>
+  <li class="active">
+    <a href="#managers" data-toggle="tab">Managers <span class="badge"><%= resource.managers.count %></span></a>
+  </li>
+  <li>
+    <a href="#teams" data-toggle="tab">Teams <span class="badge"><%= resource.teams.count %></span></a>
+  </li>
 </ul>
 
 <div class="tab-content">
   <div class="tab-pane active" id="managers">
-    <% if @managers.empty? %>
-      <h4 class="alert alert-warning">
-        You've not invited any Managers to this League yet. <%= link_to 'Invite one now', new_admin_league_manager_path(resource) %>
-      </h4>
-    <% else %>
-      <table class="table table-striped table-hover">
-        <thead>
-          <tr>
-            <th width="10"></th>
-            <th>Name</th>
-            <th>Email</th>
-            <th align="right">
-              <%= link_to 'Invite a Manager', new_admin_league_manager_path(resource), class: 'btn btn-primary btn-xs pull-right' %>
-            </th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <%- @managers.each do |manager| -%>
-            <tr class="<%= 'warning' if manager.pending_invitation? %>">
-              <td>
-                <%= icon 'hand-o-right', data: { toggle: 'tooltip', placement: 'right' }, title: "Invitation sent, but not yet accepted" if manager.pending_invitation? %>
-              </td>
-              <td><%= manager.user.name || 'n/a' %></td>
-              <td><%= manager.user.email %></td>
-              <td align="right">
-                <%= link_to 'Resend invite', resend_invitation_admin_league_manager_path(resource, manager), method: :post, class: 'btn btn-default btn-xs' if manager.pending_invitation? %>
-              </td>
-            </tr>
-          <%- end -%>
-        </tbody>
-      </table>
-    <% end %>
+    <%= render 'admin/leagues/show/managers' %>
+  </div>
+  <div class="tab-pane" id="teams">
+    <%= render 'leagues/show/teams' %>
   </div>
 </div>

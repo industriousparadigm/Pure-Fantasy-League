@@ -2,6 +2,7 @@ class Manager < ActiveRecord::Base
   belongs_to :league
   belongs_to :user
   belongs_to :invited_by, polymorphic: true
+  has_one :team
   accepts_nested_attributes_for :user
   after_create :email_invitation
   before_update :nullify_invitation_token

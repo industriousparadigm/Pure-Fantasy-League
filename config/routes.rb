@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get :admin, to: 'admin#index'
   scope :admin, module: :admin, as: :admin do
     resources :leagues do
+      resources :teams
       resources :managers do
         post :resend_invitation, to: 'managers#resend_invitation', on: :member
       end
