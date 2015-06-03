@@ -28,6 +28,8 @@ module Pfl
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.autoload_paths << Rails.root.join('lib')
+
     config.x.max_teams_per_league = 20
     config.x.max_players_per_team = 15
   end

@@ -5,9 +5,17 @@ class League < ActiveRecord::Base
   validates :title, presence: true,
                     uniqueness: { case_sensitive: false }
   normalize_attribute :title
+  before_create :set_season
 
   def to_s
     title
   end
+
+
+  private
+
+    def set_season
+      self.season = Season.current
+    end
 
 end
