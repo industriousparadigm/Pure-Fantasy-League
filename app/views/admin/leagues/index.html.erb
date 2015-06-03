@@ -1,16 +1,20 @@
 <h1>
-  <div class="pull-right"><%= link_to 'New League', new_resource_path, class: 'btn btn-primary' %></div>
+  <div class="pull-right">
+    <%= select :league, :season, Season.list, { selected: params[:by_season] }, class: 'form-control' %>
+  </div>
   Leagues
 </h1>
 
 <% if collection.empty? %>
-  <h4 class="alert alert-warning">There are no Leagues yet! <%= link_to 'Create one now', new_resource_path %></h4>
+  <h4 class="alert alert-warning">There are no Leagues! <%= link_to 'Create one now', new_resource_path %></h4>
 <% else %>
   <table class="table table-striped">
     <thead>
       <tr>
-        <th>Title</th>
-        <th width="120"></th>
+        <th>Name</th>
+        <th width="120">
+          <%= link_to 'New League', new_resource_path, class: 'btn btn-primary pull-right btn-sm' %>
+        </th>
       </tr>
     </thead>
 

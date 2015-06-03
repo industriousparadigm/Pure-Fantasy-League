@@ -31,6 +31,7 @@ gem 'mechanize'
 gem 'paranoia'
 gem 'public_activity'
 gem 'has_secure_token'
+gem 'has_scope'
 
 group :development do
   gem 'puma'

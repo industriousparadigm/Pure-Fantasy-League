@@ -1,5 +1,6 @@
 class Admin::LeaguesController < AdminController
   inherit_resources
+  has_scope :by_season, default: Season.current
 
 
   def show

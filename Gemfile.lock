@@ -291,6 +291,7 @@ DEPENDENCIES
   guard-bundler
   guard-livereload
   guard-rails
+  has_scope
   has_secure_token
   inherited_resources
   jquery-rails
