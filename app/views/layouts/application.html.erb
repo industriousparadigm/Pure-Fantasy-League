@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title><%= page_title_for_header %></title>
+    <title><%= page_title_for_header %><%= " - #{current_league}" if !admin_scope? && current_league %></title>
 
     <%= javascript_include_tag 'application' %>
     <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -23,7 +23,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/">PFL</a>
+            <div class="navbar-brand">
+              <a href="/">PFL</a>
+              <%- if !admin_scope? && current_league -%>
+                | <em><%= current_league %></em>
+              <%- end -%>
+            </div>
           </div>
 
           <div class="navbar-collapse collapse">

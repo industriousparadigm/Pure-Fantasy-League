@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     put 'users/accept_invitation', to: 'registrations#accept_invitation', as: :accept_invitation
   end
 
+  post 'set_league/:id', to: 'league#set', as: :set_league
+
   get :admin, to: 'admin#index'
   scope :admin, module: :admin, as: :admin do
     resources :leagues do
@@ -18,6 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'pages#index'
+  root 'dashboard#index'
 
 end
