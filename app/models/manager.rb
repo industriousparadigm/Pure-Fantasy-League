@@ -1,6 +1,6 @@
 class Manager < ActiveRecord::Base
   belongs_to :league
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
   belongs_to :invited_by, polymorphic: true
   has_one :team
   accepts_nested_attributes_for :user

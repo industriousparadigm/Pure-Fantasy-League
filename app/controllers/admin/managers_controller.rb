@@ -27,6 +27,11 @@ class Admin::ManagersController < AdminController
     redirect_to parent_url, notice: t('flash.managers.resend_invitation.notice', email: interpolation_options[:email])
   end
 
+  def delete_invitation
+    resource.destroy!
+    redirect_to parent_url, notice: t('flash.managers.delete_invitation.notice', email: interpolation_options[:email])
+  end
+
 
   private
 

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       post 'managers/add_myself', to: 'managers#add_myself'
       resources :managers do
         post :resend_invitation, to: 'managers#resend_invitation', on: :member
+        delete :delete_invitation, to: 'managers#delete_invitation', on: :member
       end
     end
   end

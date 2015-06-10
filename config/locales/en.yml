@@ -30,5 +30,7 @@ en:
         notice: "You have been added as a Manager"
       resend_invitation:
         notice: "Invitation has been resent to %{email}"
+      delete_invitation:
+        notice: "Invitation for %{email} has been deleted"
       create:
         notice: "%{resource_name} has been invited, and an email has been sent to %{email} with further instructions."

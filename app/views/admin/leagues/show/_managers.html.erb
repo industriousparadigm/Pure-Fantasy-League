@@ -26,10 +26,24 @@
           <td>
             <%= icon 'hand-o-right', data: { toggle: 'tooltip', placement: 'right' }, title: "Invitation sent, but not yet accepted" if manager.pending_invitation? %>
           </td>
-          <td><%= manager.user.name || 'n/a' %></td>
-          <td><%= manager.user.email %></td>
+          <td><strong><%= manager.user.name || 'n/a' %></strong></td>
+          <td><small><%= manager.user.email %></small></td>
           <td align="right">
-            <%= link_to 'Resend invite', resend_invitation_admin_league_manager_path(resource, manager), method: :post, class: 'btn btn-default btn-xs' if manager.pending_invitation? %>
+            <%- if manager.pending_invitation? -%>
+              <div class="btn-group" data-toggle="tooltip" data-placement="left" title="Invitation sent, but not yet accepted">
+                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                  <%= icon 'hand-o-right' %> Invitation <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li>
+                    <%= link_to 'Resend', resend_invitation_admin_league_manager_path(resource, manager), method: :post %>
+                  </li>
+                  <li>
+                    <%= link_to 'Delete', delete_invitation_admin_league_manager_path(resource, manager), method: :delete %>
+                  </li>
+                </ul>
+              </div>
+            <%- end -%>
           </td>
         </tr>
       <%- end -%>
