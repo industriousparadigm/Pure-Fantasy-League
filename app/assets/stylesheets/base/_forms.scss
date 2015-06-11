@@ -1,0 +1,9 @@
+.form-group.datetime {
+  @extend .form-inline;
+
+  .control-label.datetime {
+    @extend .form-inline;
+    display: block;
+    margin-bottom: 5px;
+  }
+}

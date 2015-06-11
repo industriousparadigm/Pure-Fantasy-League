@@ -2,6 +2,7 @@
   "name": "dsl-generated dependencies",
   "dependencies": {
     "moment": "latest",
-    "drop": "latest"
+    "drop": "latest",
+    "smalot-bootstrap-datetimepicker": "latest"
   }
 }

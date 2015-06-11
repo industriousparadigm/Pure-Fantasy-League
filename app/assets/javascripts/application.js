@@ -18,5 +18,6 @@
 //= require react_ujs
 //= require lodash
 //= require select2
+//= require smalot-bootstrap-datetimepicker
 //= require components
 //= require_tree ./pages
