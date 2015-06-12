@@ -25,8 +25,13 @@
             </button>
             <div class="navbar-brand">
               <a href="/">PFL</a>
-              <%- if !admin_scope? && current_league -%>
-                | <em><%= current_league %></em>
+              <%- if !admin_scope? -%>
+                <%- if current_league -%>
+                  | <em><%= current_league %></em>
+                <%- end -%>
+                <%- if current_team -%>
+                  | <em><small><%= current_team %></small></em>
+                <%- end -%>
               <%- end -%>
             </div>
           </div>

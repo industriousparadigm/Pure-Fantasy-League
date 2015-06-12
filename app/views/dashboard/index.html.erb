@@ -30,7 +30,31 @@
 
   <%- if current_league.auction_on -%>
     <h4 class="alert alert-info">
-      Auction takes places on <time><%= current_league.auction_on.to_s :long_ordinal %></time>
+      The Pre-Season Auction takes places <time><%= current_league.auction_on.to_s :short_ordinal %></time>
     </h4>
   <%- end -%>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+
+      <%- if instance_variable_defined? "@team" -%>
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <%= simple_form_for @team do |f| %>
+              <div class="row">
+                <div class="col-md-9 col-sm-8">
+                  <%= f.input :title, label: false, placeholder: 'To get started give your team a name...', input_html: { class: 'input-lg' }, autofocus: true %>
+                </div>
+                <div class="col-md-2 col-sm-4">
+                  <%= f.button :submit, 'Save Team', class: 'btn-primary btn-lg', data: { disable_with: 'Please wait...' } %>
+                </div>
+              </div>
+
+            <%- end -%>
+          </div>
+        </div>
+      <%- end -%>
+
+    </div>
+  </div>
 <%- end -%>

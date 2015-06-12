@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   post 'set_league/:id', to: 'league#set', as: :set_league
 
+  resources :teams
+
   get :admin, to: 'admin#index'
   scope :admin, module: :admin, as: :admin do
     resources :leagues do

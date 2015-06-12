@@ -22,7 +22,6 @@ class User < ActiveRecord::Base
     name
   end
 
-
   # If there is no admin user or this is a manager accepting an invite, then password is required.
   # Otherwise, no password is required.
   def password_required?

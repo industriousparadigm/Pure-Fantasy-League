@@ -18,9 +18,9 @@ module SetBreadcrumbs
   end
 
   def set_collection_breadcrumb
-    if respond_to?(:collection) && collection
+    # if respond_to?(:collection)
       add_breadcrumb resource_class.name.pluralize, collection_path
-    end
+    # end
   end
 
   def set_resource_breadcrumb

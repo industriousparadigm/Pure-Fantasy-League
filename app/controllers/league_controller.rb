@@ -1,6 +1,6 @@
 class LeagueController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_league!, unless: :current_league, except: :set
+  before_action :set_league!, :set_team!, except: :set
   respond_to :html
 
 
@@ -13,19 +13,17 @@ class LeagueController < ApplicationController
   private
 
     def set_league!
-      if signed_in?
-        @leagues = current_user.leagues.current_season
-        if @leagues.count === 1
-          set_league @leagues.first
-        else
-          unset_league
-          redirect_to :root unless current_page?(:root)
-        end
+      @leagues = current_user.leagues.current_season
+      if @leagues.count === 1
+        set_league @leagues.first
+      else
+        unset_league
+        redirect_to :root unless current_page?(:root)
       end
     end
 
     def set_league(league)
-      session[:current_league] = league.try(:id) || league
+      session[:current_league] = league.try(:id) || league unless current_league
     end
 
     def unset_league
@@ -35,6 +33,29 @@ class LeagueController < ApplicationController
 
     def current_league
       @current_league ||= session[:current_league] && League.find(session[:current_league])
+    end
+
+    def set_team!
+      manager = current_league.managers.find_by(user: current_user)
+      if team = current_league.teams.find_by(manager: manager)
+        set_team team
+      else
+        unset_team
+        redirect_to :root unless current_page?(:root)
+      end
+    end
+
+    def set_team(team)
+      session[:current_team] = team.try(:id) || team if current_league && !current_team
+    end
+
+    def unset_team
+      session.delete :current_team
+      @current_team = nil
+    end
+
+    def current_team
+      @current_team ||= session[:current_team] && Team.find(session[:current_team])
     end
 
     def current_page?(options)
