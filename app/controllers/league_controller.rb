@@ -34,7 +34,7 @@ class LeagueController < ApplicationController
     end
 
     def current_league
-      @current_league ||= League.find(session[:current_league])
+      @current_league ||= session[:current_league] && League.find(session[:current_league])
     end
 
     def current_page?(options)

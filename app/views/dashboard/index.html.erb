@@ -1,4 +1,4 @@
-<%- if !current_league && @leagues.empty? -%>
+<%- if !current_league && @leagues.blank? -%>
   <div class="jumbotron">
     <h1>Pure Fantasy League</h1>
     <p>Welcome to PFL, the world's purest form of Fantasy Football!</p>
@@ -11,7 +11,7 @@
   </h3>
 <% end %>
 
-<%- if !current_league && !@leagues.empty? && @leagues.count > 1 -%>
+<%- if !current_league && @leagues && @leagues.count > 1 -%>
   <div class="jumbotron">
     <h3>Which League do you want to manage today?</h3>
     <ul>
@@ -28,5 +28,9 @@
     <p>Welcome to PFL, the world's purest form of Fantasy Football!</p>
   </div>
 
-
+  <%- if current_league.auction_on -%>
+    <h4 class="alert alert-info">
+      Auction takes places on <time><%= current_league.auction_on.to_s :long_ordinal %></time>
+    </h4>
+  <%- end -%>
 <%- end -%>

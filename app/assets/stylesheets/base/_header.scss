@@ -1,10 +1,24 @@
-> h1 {
-  @extend .page-header;
-  margin: 35px 0;
+.page-header {
+  padding: 0;
+  margin: 20px 0 50px;
+  border: 0;
 
-  > .label {
-    font-size: 50%;
-    position: relative;
-    top: -6px;
+  h1 {
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eeeeee;
+    margin: 0;
+
+    > .label {
+      font-size: 50%;
+      position: relative;
+      top: -6px;
+    }
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-top: 14px;
+    color: #666;
+    font-weight: 200;
   }
 }

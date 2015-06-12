@@ -11,7 +11,6 @@ class Manager < ActiveRecord::Base
   before_update :nullify_invitation_token, if: -> { invitation_accepted_at_changed?(from: nil) }
   skip_callback :create, :after, :email_invitation, if: :not_invited
 
-  # default_scope { where invitation_token: nil }
   attr_accessor :not_invited
 
 

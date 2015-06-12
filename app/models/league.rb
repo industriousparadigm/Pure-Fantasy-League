@@ -1,6 +1,6 @@
 class League < ActiveRecord::Base
   has_many :teams
-  has_many :managers
+  has_many :managers, dependent: :delete_all
   has_many :users, through: :managers
   validates :title, presence: true,
                     uniqueness: { case_sensitive: false }
