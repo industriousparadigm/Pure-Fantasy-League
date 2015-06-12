@@ -14,6 +14,9 @@ class LeagueController < ApplicationController
 
     def set_league!
       @leagues = current_user.leagues.current_season
+
+      return if current_league
+
       if @leagues.count === 1
         set_league @leagues.first
       else
@@ -23,7 +26,7 @@ class LeagueController < ApplicationController
     end
 
     def set_league(league)
-      session[:current_league] = league.try(:id) || league unless current_league
+      session[:current_league] = league.try(:id) || league
     end
 
     def unset_league
@@ -36,6 +39,8 @@ class LeagueController < ApplicationController
     end
 
     def set_team!
+      return unless current_league
+
       manager = current_league.managers.find_by(user: current_user)
       if team = current_league.teams.find_by(manager: manager)
         set_team team
@@ -46,7 +51,7 @@ class LeagueController < ApplicationController
     end
 
     def set_team(team)
-      session[:current_team] = team.try(:id) || team if current_league && !current_team
+      session[:current_team] = team.try(:id) || team
     end
 
     def unset_team

@@ -1,0 +1,18 @@
+<%- if !admin_scope? -%>
+  <%- if current_league -%>
+    <li class="dropdown">
+      <%= link_to root_path, class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
+        <%= current_league %> <span class="caret"></span>
+      <%- end -%>
+      <ul class="dropdown-menu">
+        <%- @leagues.each do |league| -%>
+          <li class="<%= 'active' if league == current_league %>"><%= link_to league, set_league_path(league), method: :post %></li>
+        <%- end -%>
+      </ul>
+    </li>
+  <%- end -%>
+
+  <%- if current_team -%>
+    <li><%= link_to current_team, current_team %></li>
+  <%- end -%>
+<%- end -%>
