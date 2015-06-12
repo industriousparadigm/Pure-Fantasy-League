@@ -1,0 +1,52 @@
+<% if @managers.empty? %>
+  <h4 class="alert alert-warning">
+    You've not invited any Managers to this League yet. <%= link_to 'Invite one now', new_admin_league_manager_path(resource) %> or <%= link_to "add yourself", admin_league_managers_add_myself_path(resource), method: :post %>
+  </h4>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th width="10"></th>
+        <th>Name</th>
+        <th>Email</th>
+        <th align="right">
+          <div class="pull-right">
+            <%= link_to 'Invite a Manager', new_admin_league_manager_path(resource) %>
+            <% unless current_user.leagues.include?(resource) %>
+              or <%= link_to "add yourself", admin_league_managers_add_myself_path(resource), method: :post %>
+            <% end %>
+          </div>
+        </th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%- @managers.each do |manager| -%>
+        <tr class="<%= 'warning' if manager.pending_invitation? %>">
+          <td>
+            <%= icon 'hand-o-right', data: { toggle: 'tooltip', placement: 'right' }, title: "Invitation sent, but not yet accepted" if manager.pending_invitation? %>
+          </td>
+          <td><strong><%= manager.user.name || 'n/a' %></strong></td>
+          <td><small><%= manager.user.email %></small></td>
+          <td align="right">
+            <%- if manager.pending_invitation? -%>
+              <div class="btn-group" data-toggle="tooltip" data-placement="left" title="Invitation sent, but not yet accepted">
+                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                  <%= icon 'hand-o-right' %> Invitation <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li>
+                    <%= link_to 'Resend', resend_invitation_admin_league_manager_path(resource, manager), method: :post %>
+                  </li>
+                  <li>
+                    <%= link_to 'Delete', delete_invitation_admin_league_manager_path(resource, manager), method: :delete %>
+                  </li>
+                </ul>
+              </div>
+            <%- end -%>
+          </td>
+        </tr>
+      <%- end -%>
+    </tbody>
+  </table>
+<% end %>

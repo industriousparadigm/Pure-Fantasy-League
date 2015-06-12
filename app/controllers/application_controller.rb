@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  helper_method :admin_scope?
+  helper_method :admin_scope?, :current_league
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   rescue_from Pundit::NotAuthorizedError do |e|
@@ -40,6 +40,10 @@ class ApplicationController < ActionController::Base
       unless current_user.admin?
         raise Pundit::NotAuthorizedError.new(query: :access, record: self.class.name)
       end
+    end
+
+    def current_league
+      @current_league ||= nil
     end
 
 end

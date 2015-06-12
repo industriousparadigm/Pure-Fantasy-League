@@ -1,5 +1,5 @@
 class League < ActiveRecord::Base
-
+  has_many :teams
   has_many :managers
   has_many :users, through: :managers
   validates :title, presence: true,
@@ -7,8 +7,21 @@ class League < ActiveRecord::Base
   normalize_attribute :title
   before_create :set_season
 
+  default_scope { order :season }
+  scope :current_season, -> { where season: Season.current }
+  scope :by_season, -> season { where season: season }
+
+
   def to_s
     title
+  end
+
+  def season
+    Season.new read_attribute(:season)
+  end
+
+  def current_season?
+    Season.current == season
   end
 
 

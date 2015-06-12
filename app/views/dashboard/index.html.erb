@@ -1,0 +1,32 @@
+<%- if !current_league && @leagues.empty? -%>
+  <div class="jumbotron">
+    <h1>Pure Fantasy League</h1>
+    <p>Welcome to PFL, the world's purest form of Fantasy Football!</p>
+  </div>
+<%- end -%>
+
+<% unless registered_admin? %>
+  <h3 class="jumbotron">
+    It looks like you're the first one here - <%= link_to 'Sign up as admin now', new_user_registration_path %>!
+  </h3>
+<% end %>
+
+<%- if !current_league && !@leagues.empty? && @leagues.count > 1 -%>
+  <div class="jumbotron">
+    <h3>Which League do you want to manage today?</h3>
+    <ul>
+      <%- @leagues.each do |league| -%>
+        <li><strong><%= link_to league, set_league_path(league), method: :post %></strong></li>
+      <%- end -%>
+    </ul>
+  </div>
+<%- end -%>
+
+<%- if current_league -%>
+  <div class="jumbotron">
+    <h2><%= current_league %> <small>Pure Fantasy League</small></h2>
+    <p>Welcome to PFL, the world's purest form of Fantasy Football!</p>
+  </div>
+
+
+<%- end -%>

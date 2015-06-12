@@ -6,15 +6,20 @@ Rails.application.routes.draw do
     put 'users/accept_invitation', to: 'registrations#accept_invitation', as: :accept_invitation
   end
 
+  post 'set_league/:id', to: 'league#set', as: :set_league
+
   get :admin, to: 'admin#index'
   scope :admin, module: :admin, as: :admin do
     resources :leagues do
+      resources :teams
+      post 'managers/add_myself', to: 'managers#add_myself'
       resources :managers do
         post :resend_invitation, to: 'managers#resend_invitation', on: :member
+        delete :delete_invitation, to: 'managers#delete_invitation', on: :member
       end
     end
   end
 
-  root 'pages#index'
+  root 'dashboard#index'
 
 end

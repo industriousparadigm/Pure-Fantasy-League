@@ -1,0 +1,24 @@
+<% if resource.teams.empty? %>
+  <h4 class="alert alert-warning">
+    This League currently has no teams.
+  </h4>
+<% else %>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th width="10"></th>
+        <th>Name</th>
+        <th>Manager</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% resource.teams.each do |team| %>
+        <tr>
+          <td><%= team %></td>
+          <td><%= team.manager %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>

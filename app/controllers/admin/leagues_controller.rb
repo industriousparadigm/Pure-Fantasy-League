@@ -1,5 +1,6 @@
 class Admin::LeaguesController < AdminController
   inherit_resources
+  has_scope :by_season, default: Season.current
 
 
   def show
@@ -12,7 +13,7 @@ class Admin::LeaguesController < AdminController
   private
 
     def permitted_params
-      params.permit league: [:title]
+      params.permit league: [:title, :auction_on]
     end
 
 end
