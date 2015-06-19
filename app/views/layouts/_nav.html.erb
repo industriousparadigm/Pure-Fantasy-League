@@ -6,13 +6,22 @@
       <%- end -%>
       <ul class="dropdown-menu">
         <%- @leagues.each do |league| -%>
-          <li class="<%= 'active' if league == current_league %>"><%= link_to league, set_league_path(league), method: :post %></li>
+          <li class="<%= 'active' if league == current_league %>">
+            <%= link_to league, set_league_path(league), method: :post %>
+          </li>
         <%- end -%>
       </ul>
     </li>
   <%- end -%>
 
   <%- if current_team -%>
-    <li><%= link_to current_team, current_team %></li>
+    <li class="dropdown">
+      <%= link_to '#', class: 'dropdown-toggle', data: { toggle: 'dropdown' } do %>
+        <%= current_team %> <span class="caret"></span>
+      <%- end -%>
+      <ul class="dropdown-menu">
+        <li><%= link_to 'Edit team', [:edit, current_team] %></li>
+      </ul>
+    </li>
   <%- end -%>
 <%- end -%>
