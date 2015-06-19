@@ -13,8 +13,8 @@ class Season
   end
 
 
-  def initialize(year)
-    @year = year
+  def initialize(year=nil)
+    @year = year || self.class.current
   end
 
   def to_s

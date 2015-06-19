@@ -13,6 +13,8 @@ class Manager < ActiveRecord::Base
 
   attr_accessor :not_invited
 
+  validates :user, uniqueness: true
+
 
   def to_s
     user.to_s

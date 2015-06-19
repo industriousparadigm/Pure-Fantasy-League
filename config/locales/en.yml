@@ -28,6 +28,7 @@ en:
     managers:
       myself_added:
         notice: "You have been added as a Manager"
+        alert: "You cannot be added as a Manager right now"
       resend_invitation:
         notice: "Invitation has been resent to %{email}"
       delete_invitation:

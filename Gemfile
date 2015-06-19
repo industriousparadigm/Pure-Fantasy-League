@@ -32,6 +32,7 @@ gem 'paranoia'
 gem 'public_activity'
 gem 'has_secure_token'
 gem 'has_scope'
+gem 'activeadmin', github: 'activeadmin'
 
 group :development do
   gem 'puma'
