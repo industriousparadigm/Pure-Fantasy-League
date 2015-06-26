@@ -1,6 +1,7 @@
 class TeamsController < LeagueController
   include SetBreadcrumbs
   inherit_resources
+  skip_before_action :set_team!, if: -> { action_name == 'create' }
 
 
   def create
