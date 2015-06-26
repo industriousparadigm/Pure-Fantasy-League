@@ -1,6 +1,8 @@
 class Player < ActiveRecord::Base
-  enum position: [ :goalkeeper, :fullback, :centreback, :midfielder, :striker ]
+  enum position: [ :g, :f, :c, :m, :s ]
   belongs_to :club
+
+  validates :first_name, :last_name, :club, :position, presence: true
 
 
   def to_s
@@ -8,7 +10,7 @@ class Player < ActiveRecord::Base
   end
 
   def position
-    @position ||= Position.new(read_attribute(:position))
+    @position ||= read_attribute(:position) ? Position.new(read_attribute(:position)) : nil
   end
 
 end

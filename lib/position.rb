@@ -23,12 +23,25 @@ class Position
   ]
 
 
-  def initilize(position)
+  def self.list
+    POSITIONS.map { |po| [ po[:title], po[:abbr] ] }
+  end
+
+
+  def initialize(position=nil)
     @position = position
   end
 
-  def short
-    position
+  def abbr
+    @position ? POSITIONS[@position][:abbr] : nil
+  end
+
+  def title
+    @position ? POSITIONS[@position][:title] : nil
+  end
+
+  def to_s
+    title
   end
 
 end
